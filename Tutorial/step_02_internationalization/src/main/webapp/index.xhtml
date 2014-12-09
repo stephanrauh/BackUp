@@ -20,19 +20,19 @@
 					but it required a lot of boilerplate code.</p>
 					<p>Let's return to the car dealer customer form:</p>
 					<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-			<prime:panel header="Contact information">
-				<prime:panelGrid columns="3">
-					<prime:inputText value="#{customer.lastName}" />
-					<prime:inputText value="#{customer.firstName}" />
-					<prime:inputText value="#{customer.dateOfBirth}" />
-					<prime:inputText value="#{customer.emailAddress}" />
-					<prime:selectBooleanCheckbox value="#{customer.IAgreeToTheTermsAndConditions}" />
-				</prime:panelGrid>
-				<prime:commandButton value="save" update="angular" action="#{customer.save}" />
-			</prime:panel>
+			&lt;prime:panel header="Contact information">
+				&lt;prime:panelGrid columns="3">
+					&lt;prime:inputText value="#{customer.lastName}" />
+					&lt;prime:inputText value="#{customer.firstName}" />
+					&lt;prime:inputText value="#{customer.dateOfBirth}" />
+					&lt;prime:inputText value="#{customer.emailAddress}" />
+					&lt;prime:selectBooleanCheckbox value="#{customer.IAgreeToTheTermsAndConditions}" />
+				&lt;/prime:panelGrid>
+				&lt;prime:commandButton value="save" update="angular" action="#39;{customer.save}" />
+			&lt;/prime:panel>
 					]]></script>
 					<p>This translate to a nice English version (well, usually there are a few glitches which can be ignored while your project is in its prototype phase):</p>
-					<img src="carshop_english.png">
+					<img src="carshop_english.png" />
 					<p>To expand to the international markets, you'll have to provide translations to the texts. AngularFaces makes it very easy to do so.</p>
 					
 					<h3>Preparing your project</h3>
@@ -55,7 +55,7 @@
 					<p>The language files resemble the standard JSF language files. They are property files that have to be in the root folder
 					of your classpath. AngularFaces uses a fixed name: it's always "i18n.properties". You can configure that differently (which is good,
 					because you don't have to configure it in the first place).</p>
-					<p>More precicely, AngularFaces looks for the property files in a similar manner as JSF does:</p>
+					<p>More precisely, AngularFaces looks for the property files in a similar manner as JSF does:</p>
 					<p>
 					<ul><li>First, it looks for a file specific to your language and country, such as "i18n_de_at.properties" for Austrian German.</li>
 					<li>If there's no such file matching your browser's locale settings, it looks for a file specific to your default language, such as
@@ -66,10 +66,11 @@
 					an "i18n.properties" file containing the English translation. However, you can use this file to fix the glitches caused by the
 					automatic "de-camel-casing" algorithm which guesses labels from JSF bean attribute names.</li>
 					</ul>
+					</p>
 					<h3>The language files</h3>
 					<p>The language files drop several of the constraints give by standard JSF. You can use arbitrary keys. The idea is to simply use the 
 					original texts as keys. In a few cases you have to add extra attributes to get rid of ambiguous translations, but in most cases this
-					approach works surprisingly good. The german translation file of our example looks like so:<p>
+					approach works surprisingly good. The German translation file of our example looks like so:</p>
 					<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 car dealer - customer contact information=Kontaktinformation
 Contact information=Ihre Anschrift
@@ -82,7 +83,7 @@ save=Speichern]]></script>
 					<p>You may or may not surround keys and translations with double quotes. Quotes are useful if the texts contain an "equals" sign.</p>
 					<h3>How to modify your JSF file to benefit from the translation files</h3>
 					Now, that's the nice part of AngularFaces: you don't have to do anything to make your JSF files multiligual. Adding the language files and
-					configuring the faces-config.xml is all you have to do to make the contact form look like this:<p>
+					configuring the faces-config.xml is all you have to do to make the contact form look like this:
 					<img src="carshop_german.png" />
 					<img src="carshop_spanish.png" />
 					
@@ -92,6 +93,7 @@ save=Speichern]]></script>
 					<br />
 					<br />
 					<br />
+					
 		
     
   </h:body>

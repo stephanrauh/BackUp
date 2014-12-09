@@ -85,7 +85,8 @@ public class Customer {
 		this.stayAnonymous = stayAnonymous;
 	}
 	
-	public void save() {
+	public String save() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer data saved."));
+		return null;
 	}
 }
