@@ -140,7 +140,7 @@ function LabelDemoController($scope) {
 					<prime:inputText value="&#35;{customer.firstName}" />
 					<prime:inputText value="&#35;{customer.dateOfBirth}" />
 					<prime:inputText value="&#35;{customer.emailAddress}" />
-					<prime:selectBooleanCheckbox value="&#35;{customer.iAgreeToTheTermsAndConditions}" />
+					<prime:selectBooleanCheckbox value="&#35;{customer.IAgreeToTheTermsAndConditions}" />
 				</prime:panelGrid>
 				<prime:commandButton value="save" update="angular" action="&#35;{customer.save}" />
 			</prime:panel>
@@ -148,6 +148,73 @@ function LabelDemoController($scope) {
 		
 	</h:body>
 </f:view>]]></script>
+<p>The customer bean looks like so:</p>
+		<script type="syntaxhighlighter" class="brush:java"><![CDATA[@ManagedBean
+@SessionScoped
+public class Customer {
+	private Date dateOfBirth;
+	
+	@Email
+	private String emailAddress;
+	
+	@NotNull
+	@Size(min=5, max=20)
+	private String firstName;
+	
+	private boolean iAgreeToTheTermsAndConditions;
+	
+	@NotNull
+	@Size(min=5, max=20)
+	private String lastName;
+	
+	private boolean stayAnonymous;
+	
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public boolean isIAgreeToTheTermsAndConditions() {
+		return iAgreeToTheTermsAndConditions;
+	}
+	public boolean isStayAnonymous() {
+		return stayAnonymous;
+	}
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public void setIAgreeToTheTermsAndConditions(boolean iAgreeToTheTermsAndConditions) {
+		this.iAgreeToTheTermsAndConditions = iAgreeToTheTermsAndConditions;
+	}
+	public void setLastName(String lastName) {
+		if (null != lastName) lastName=lastName.toUpperCase();
+		this.lastName = lastName;
+	}
+	public void setStayAnonymous(boolean stayAnonymous) {
+		this.stayAnonymous = stayAnonymous;
+	}
+	
+	public String save() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer data saved."));
+		return null;
+	}
+}
+		
+		]]></script>
+
 		<h3>Layouting labels and messages</h3>
 		<p>As of AngularFaces 2.0 RC3 labels always preceed their input field. Messages always follow the input field. That's why the example uses a PrimeFaces panel grid
       	with columns="3": The input field is accomponied by two components that are added automatically to the JSF view.</p>
